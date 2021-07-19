@@ -53,4 +53,3 @@ export function childrenWithProps(children: ReactNode, props: Record<string, any
     return child;
   });
 }
-

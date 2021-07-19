@@ -28,13 +28,15 @@ const EditTable: FC = () => {
   }, []);
   const columns: EditColumns[] = columnsAssembling(tableColumns, {
     storageId: {
-      render: (_, record, {onRefresh}) => {
-        const {realNumber} = record;
-        return <InputNumber
-        value={realNumber}
-        placeholder="请输入..."
-        onChange={(value) => onInputChange(value, onRefresh, record)}
-      />
+      render: (_, record, { onRefresh }) => {
+        const { realNumber } = record;
+        return (
+          <InputNumber
+            value={realNumber}
+            placeholder="请输入..."
+            onChange={(value) => onInputChange(value, onRefresh, record)}
+          />
+        );
       },
     },
     distanceNumber: {
@@ -48,21 +50,23 @@ const EditTable: FC = () => {
   return (
     <PageContainer>
       <Card bodyStyle={{ padding: '0 24px' }}>
-        <div className='ant-table ant-table-middle'>
-          <div className='ant-table-container'>
-            <div className='ant-table-content'>
-              <table style={{tableLayout: 'auto'}}>
+        <div className="ant-table ant-table-middle">
+          <div className="ant-table-container">
+            <div className="ant-table-content">
+              <table style={{ tableLayout: 'auto' }}>
                 <colgroup>
                   <col />
                 </colgroup>
-                <thead className='ant-table-thead'>
+                <thead className="ant-table-thead">
                   <tr>
                     {columns.map((item) => (
-                      <th className='ant-table-cell' key={item.dataIndex as string}>{item.title}</th>
+                      <th className="ant-table-cell" key={item.dataIndex as string}>
+                        {item.title}
+                      </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className='ant-table-tbody'>
+                <tbody className="ant-table-tbody">
                   {dataSource.map((item, idx) => (
                     <ColumnItem columns={columns} index={idx + 1} key={item.id} record={item} />
                   ))}
